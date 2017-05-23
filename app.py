@@ -36,14 +36,9 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") == "calculate.investment":
-        {
-    res = makeWebhookResult_Calculate(data)
-    return res
-        }
-    
+       
     if req.get("result").get("action") == "user.stop":
-    {
+    
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
@@ -53,7 +48,7 @@ def processRequest(req):
     data = json.loads(result)
     res = makeWebhookResult(data)
     return res
-    }
+    
 
 
 def makeYqlQuery(req):
