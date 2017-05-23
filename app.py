@@ -60,14 +60,7 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-    income = 1800
-    expense = 600
-    age = 30
-    retirementAge = 65
-    
-    speech = "As you still have " + retirementAge-age + "years for your retirement, you can save " + (income-expense)*0.10 + "$ every month." 
-    
-   # speech = "You need to save 1000$ every month towars your retirement."
+    speech = "You need to save 1000$ every month towards your retirement."
 
     return {
         "speech": speech,
