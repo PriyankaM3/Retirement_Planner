@@ -86,9 +86,6 @@ def makeWebhookResult(data):
 
     speech = "You need to save 1000$ every month towars your retirement."
 
-    print("Response:")
-    print(speech)
-
     return {
         "speech": speech,
         "displayText": speech,
