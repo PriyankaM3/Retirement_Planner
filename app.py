@@ -36,8 +36,14 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "user.stop":
-        return {}
+    if req.get("result").get("action") == "calculate.investment":
+        {
+    res = makeWebhookResult_Calculate(data)
+    return res
+        }
+    
+    if req.get("result").get("action") == "user.stop":
+    {
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
@@ -47,6 +53,7 @@ def processRequest(req):
     data = json.loads(result)
     res = makeWebhookResult(data)
     return res
+    }
 
 
 def makeYqlQuery(req):
@@ -64,6 +71,23 @@ def makeWebhookResult(data):
     # print(json.dumps(item, indent=4))
 
     speech = "No Problem, See you soon"
+
+    print("Response:")
+    print(speech)
+
+    return {
+        "speech": speech,
+        "displayText": speech,
+        # "data": data,
+        # "contextOut": [],
+        "source": "apiai-weather-webhook-sample"
+    }
+
+def makeWebhookResult_Calculate(data):
+
+    # print(json.dumps(item, indent=4))
+
+    speech = "You need to save 1000$ every month"
 
     print("Response:")
     print(speech)
