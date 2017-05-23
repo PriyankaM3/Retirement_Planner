@@ -36,7 +36,7 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "user.stop":
+    if req.get("result").get("action") != "calculate.investment":
         return {}
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
@@ -84,7 +84,7 @@ def makeWebhookResult(data):
 
     # print(json.dumps(item, indent=4))
 
-    speech = "No Problem, See You Soon"
+    speech = "You need to save 1000$ every month towars your retirement."
 
     print("Response:")
     print(speech)
