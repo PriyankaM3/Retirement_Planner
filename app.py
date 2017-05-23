@@ -92,8 +92,17 @@ print("Response:")
     return {
         "speech": speech,
         "displayText": speech,
-        # "data": data,
-        # "contextOut": [],
+        data:{
+                    google:{
+                        expect_user_response: false,
+                        final_response: {
+                            speech_response: {
+                            text_to_speech: data.message
+                            }
+                        }
+                    }
+                },
+        "contextOut": [],
         "source": "Virtual_Retirement_Advisor"
 }
 
