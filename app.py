@@ -37,7 +37,7 @@ def webhook():
 
 def processRequest(req):
     if req.get("result").get("action") != "calculate.investment":
-     
+        return{}
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
@@ -48,17 +48,7 @@ def processRequest(req):
     res = makeWebhookResult(data)
     return res
 
-else:
-    
-    baseurl = "https://query.yahooapis.com/v1/public/yql?"
-    yql_query = makeYqlQuery(req)
-    if yql_query is None:
-        return {}
-    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
-    result = urlopen(yql_url).read()
-    data = json.loads(result)
-    res = makeWebhookResults(data)
-    return res
+
 
 def makeYqlQuery(req):
     result = req.get("result")
@@ -81,16 +71,6 @@ def makeWebhookResult(data):
         "source": "apiai-weather-webhook-sample"
     }
 
-def makeWebhookResults(data):
-    speech = "Every month You need to save minimum of 10% of your monthly income towards your retirement."
-
-    return {
-        "speech": speech,
-        "displayText": speech,
-        # "data": data,
-        # "contextOut": [],
-        "source": "apiai-weather-webhook-sample"
-    }
 
 
 if __name__ == '__main__':
